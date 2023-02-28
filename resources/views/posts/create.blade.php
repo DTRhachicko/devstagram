@@ -16,7 +16,7 @@
             </form>
         </div>
         <div class="md:w-1/2 p-10 mt-10 md:mt-0 bg-white rounded-lg shadow-xl">
-            <form action="{{ route('imagenes.store') }}" method="POST" novalidate>
+            <form action="{{ route('posts.store') }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">Titulo</label>
@@ -30,6 +30,13 @@
                     <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">Descripciòn</label>
                     <textarea id="descripcion" name="descripcion" placeholder="Descripciòn de la publicaciòn" class="border p-3 w-full rounded-lg @error('descripcion') border-red-500  @enderror">{{ old('descripcion') }}</textarea>
                     @error('descripcion')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-5">
+                    <input type="hidden" name="imagen" value="{{ old('imagen') }}">
+                    @error('imagen')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
                 </div>
