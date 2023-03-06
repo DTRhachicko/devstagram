@@ -19,8 +19,13 @@ class PostController extends Controller
     {
         //dd(auth()->user());
         //dd($user -> username);
+        //obtener posts del perfil del usuario en el que estamos
+        $posts = Post::where('user_id', $user->id)->paginate(10);
+        //dd($posts);
+
         return view('dashboard', [
-                'user' => $user
+                'user' => $user,
+                'posts' => $posts
         ]);
     }
 
@@ -61,8 +66,8 @@ class PostController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
-
-
         return redirect()->route('posts.index', auth()->user()->username);
     }
+
+
 }
