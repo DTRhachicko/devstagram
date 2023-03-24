@@ -22,7 +22,8 @@ class PostController extends Controller
         //dd(auth()->user());
         //dd($user -> username);
         //obtener posts del perfil del usuario en el que estamos
-        $posts = Post::where('user_id', $user->id)->paginate(10);
+        //latest ordena del ultimo registro al primero
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(10);
         //dd($posts);
 
         return view('dashboard', [
