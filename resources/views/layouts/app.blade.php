@@ -13,6 +13,8 @@
         @stack('styles')
 
         @vite('resources/css/app.css')
+
+        @livewireStyles
         
     </head>
     <body class="bg-gray-100">
@@ -70,5 +72,7 @@
 
         <!-- JavaScript -->
         @vite('resources/js/app.js')
+
+        @livewireScripts
     </body>
 </html>
